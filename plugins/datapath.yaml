@@ -1,0 +1,46 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: datapath
+spec:
+  version: "v0.1.0"
+  homepage: https://github.com/SRodi/kubectl-datapath
+  shortDescription: Observe packet evidence in the Kubernetes datapath
+  description: |
+    Launches short-lived node agents and presents packet observations,
+    attribution confidence, compatibility, and event loss in a terminal UI.
+  caveats: |
+    Requires Linux Kubernetes nodes with BTF and cgroup v2. The short-lived
+    agents run as privileged Pods with hostNetwork and hostPID, and require
+    permission to create Pods, read their logs, and delete them.
+
+    Multus secondary interfaces and Windows nodes are not supported.
+  platforms:
+  - selector:
+      matchLabels:
+        os: linux
+        arch: amd64
+    uri: https://github.com/SRodi/kubectl-datapath/releases/download/v0.1.0/kubectl-datapath_0.1.0_linux_amd64.tar.gz
+    sha256: 6e83a8218088d46671284fb196827ea0f8e90fa7709d4ce7dc55e9bd88f35e14
+    bin: kubectl-datapath
+  - selector:
+      matchLabels:
+        os: linux
+        arch: arm64
+    uri: https://github.com/SRodi/kubectl-datapath/releases/download/v0.1.0/kubectl-datapath_0.1.0_linux_arm64.tar.gz
+    sha256: 865f0191a27d5e5370e116dff9eda7711b8308cbe5ab79978fe22301a521b062
+    bin: kubectl-datapath
+  - selector:
+      matchLabels:
+        os: darwin
+        arch: amd64
+    uri: https://github.com/SRodi/kubectl-datapath/releases/download/v0.1.0/kubectl-datapath_0.1.0_darwin_amd64.tar.gz
+    sha256: fc4e6cc7c4f05b31109e3b6fde9aceaaeb9d70231536984c02aa03f1f71a3eb0
+    bin: kubectl-datapath
+  - selector:
+      matchLabels:
+        os: darwin
+        arch: arm64
+    uri: https://github.com/SRodi/kubectl-datapath/releases/download/v0.1.0/kubectl-datapath_0.1.0_darwin_arm64.tar.gz
+    sha256: d647ddd59962cee5e76ce2d160de5267c71ed0a2927afa423215de0e8b1a2e93
+    bin: kubectl-datapath
